@@ -26,12 +26,13 @@ module.Functions = {
             return
         end
 
+        getgenv().script_key = Key
+
         local api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.lua"))()
         api.script_id = module.ScriptID
-        getgenv().script_key = Key
         
         local success, status = pcall(function()
-            return api.check_key(Key)
+            return api.check_key(getgenv().script_key)
         end)
         
         if not success then
@@ -53,6 +54,7 @@ module.Functions = {
                     Duration = 5
                 })
             end
+            task.wait(0.1)
             pcall(function()
                 api.load_script()
             end)
