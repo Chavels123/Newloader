@@ -1,0 +1,74 @@
+local module = {
+    MainWindow = nil,
+    Notify = nil
+}
+
+local GameIDs = {    
+    ["Universal"] = "f54d1815663e1da8e35b596b3f7a190e"
+}
+
+module.ScriptID = GameIDs["Universal"]
+
+module.Functions = {
+    CheckKey = function(Key)
+        if not Key or Key == "" then
+            if module.Notify then
+                module.Notify({
+                    Title = "Error",
+                    Content = "Please enter a key",
+                    Duration = 5
+                })
+            end
+            return
+        end
+
+        getgenv().script_key = Key
+
+        local api = loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.lua"))()
+        api.script_id = module.ScriptID
+        
+        local success, status = pcall(function()
+            return api.check_key(getgenv().script_key)
+        end)
+        
+        if not success then
+            if module.Notify then
+                module.Notify({
+                    Title = "Error",
+                    Content = "Failed to validate key",
+                    Duration = 5
+                })
+            end
+            return
+        end
+        
+        if status.code == "KEY_VALID" then
+            if module.Notify then
+                module.Notify({
+                    Title = "Success",
+                    Content = status.message,
+                    Duration = 5
+                })
+            end
+            task.wait(0.1)
+            pcall(function()
+                api.load_script()
+            end)
+            if module.MainWindow then
+                module.MainWindow:Destroy()
+            end
+            return
+        else
+            if module.Notify then
+                module.Notify({
+                    Title = "Error",
+                    Content = status.message,
+                    Duration = 5
+                })
+            end
+            return
+        end
+    end
+}
+
+return module
