@@ -16,7 +16,7 @@ local GameIDs = {
     [2768379856] = "877b22f6944965a8f352ff8980d055ee",
 }
 
-module.ScriptID = GameIDs[game.PlaceId] or "baf0792f6cce01ba2040d6bf52996eb8"
+module.ScriptID = GameIDs[game.PlaceId] or "e875a9abc2005dd220616ad2d265e2b9"
 
 module.Functions = {
     CheckKey = function(Key)
