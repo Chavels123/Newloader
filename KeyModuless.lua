@@ -14,6 +14,7 @@ local GameIDs = {
     [18199615050] = "f94ef2b233e95b8ff359b6b089d46f48",
     [142823291] = "8cd48d4ae8ca2c6da70cd1a3092efdc6",
     [2768379856] = "877b22f6944965a8f352ff8980d055ee",
+    [83704201064817] = "cf15315e9b55371d845882b79058fbc7",
 }
 
 module.ScriptID = GameIDs[game.PlaceId] or "e875a9abc2005dd220616ad2d265e2b9"
