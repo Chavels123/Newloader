@@ -139,16 +139,8 @@ function module.CheckKey(key)
             })
         end
         
-        task.wait(0.1)
-        pcall(function()
-            api.load_script()
-        end)
-        
-        if module.MainWindow then
-            task.delay(1, function()
-                module.MainWindow:Destroy()
-            end)
-        end
+        -- Store the API object so LoadScript can use it later
+        module._api = api
         
         return true
     else
@@ -166,6 +158,24 @@ function module.CheckKey(key)
     end
 end
 
+
+function module.LoadScript()
+    if module._api then
+        task.wait(0.1)
+        pcall(function()
+            module._api.load_script()
+        end)
+        
+        if module.MainWindow then
+            task.delay(1, function()
+                module.MainWindow:Destroy()
+            end)
+        end
+        
+        return true
+    end
+    return false
+end
 
 function module.GetKeyLink()
     return "https://ads.luarmor.net/get_key?for=Pulse_Hub_Checkpoint-TxLYDUUMfNao"
