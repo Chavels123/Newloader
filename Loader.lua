@@ -12,6 +12,7 @@ local GameIds = {
     [18199615050] = "Demonology [Lobby]",
     [18794863104] = "Demonology [Game]",
     [8260276694] = "Ability Wars",
+    [126884695634066] = "Grow A Garden [BETA]",
 
 }
 
