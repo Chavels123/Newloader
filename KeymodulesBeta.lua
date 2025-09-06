@@ -155,8 +155,7 @@ function module.CheckKey(key)
                 Duration = 5
             })
         end
-        
-        -- Store the API object so LoadScript can use it later
+
         module._api = api
         
         return true
