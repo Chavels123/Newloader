@@ -1,7 +1,9 @@
 local SUPPORTED_GAMES = {
     [18794863104] = true,
     [18199615050] = true,
-    [130565641176498] = true
+    [130565641176498] = true,
+    [6348640020] = true,
+    [6137321701] = true
 }
 
 local currentPlaceId = game.PlaceId
